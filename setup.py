@@ -232,6 +232,7 @@ doc = [
     'sphinx-jinja~=1.1',
     'sphinx-rtd-theme>=0.1.6',
     'sphinxcontrib-httpdomain>=1.7.0',
+    "sphinxcontrib-redoc>=1.6.0"
 ]
 docker = [
     'docker~=3.0',
@@ -319,6 +320,9 @@ kerberos = [
 kubernetes = [
     'cryptography>=2.0.0',
     'kubernetes>=3.0.0',
+]
+kylin = [
+    'kylinpy>=2.6'
 ]
 ldap = [
     'ldap3>=2.5.1',
@@ -491,6 +495,7 @@ PROVIDERS_REQUIREMENTS: Dict[str, Iterable[str]] = {
     "apache.druid": druid,
     "apache.hdfs": hdfs,
     "apache.hive": hive,
+    "apache.kylin": kylin,
     "apache.livy": [],
     "apache.pig": [],
     "apache.pinot": pinot,
@@ -555,6 +560,7 @@ EXTRAS_REQUIREMENTS: Dict[str, Iterable[str]] = {
     "apache.druid": druid,
     "apache.hdfs": hdfs,
     "apache.hive": hive,
+    "apache.kylin": kylin,
     "apache.pinot": pinot,
     "apache.webhdfs": webhdfs,
     'async': async_packages,
@@ -589,7 +595,7 @@ EXTRAS_REQUIREMENTS: Dict[str, Iterable[str]] = {
     'jdbc': jdbc,
     'jira': jira,
     'kerberos': kerberos,
-    'kubernetes': kubernetes,  # TODO: remove this in Airflow 2.1
+    'kubernetes': kubernetes,   # TODO: remove this in Airflow 2.1
     'ldap': ldap,
     "microsoft.azure": azure,
     "microsoft.mssql": mssql,
@@ -748,6 +754,7 @@ def do_setup():
         version=version,
         packages=find_packages(exclude=['tests*']),
         package_data={
+            'airflow': ['py.typed'],
             '': ['airflow/alembic.ini', "airflow/git_version", "*.ipynb",
                  "airflow/providers/cncf/kubernetes/example_dags/*.yaml"],
             'airflow.api_connexion.openapi': ['*.yaml'],

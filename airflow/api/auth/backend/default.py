@@ -17,7 +17,7 @@
 # under the License.
 """Default authentication backend - everything is allowed"""
 from functools import wraps
-from typing import Optional
+from typing import Callable, TypeVar, cast
 
 from airflow.typing_compat import Protocol
 
@@ -33,17 +33,17 @@ class ClientAuthProtocol(Protocol):
         ...
 
 
-CLIENT_AUTH = None  # type: Optional[ClientAuthProtocol]
-
-
 def init_app(_):
     """Initializes authentication backend"""
 
 
-def requires_authentication(function):
+T = TypeVar("T", bound=Callable)  # pylint: disable=invalid-name
+
+
+def requires_authentication(function: T):
     """Decorator for functions that require authentication"""
     @wraps(function)
     def decorated(*args, **kwargs):
         return function(*args, **kwargs)
 
-    return decorated
+    return cast(T, decorated)

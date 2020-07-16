@@ -70,7 +70,7 @@ Apache Airflow is tested with:
 
 ### Stable version (1.10.11)
 
-* Python versions: 2.7, 3.5, 3.6, 3.7
+* Python versions: 2.7, 3.5, 3.6, 3.7, 3.8
 * Postgres DB: 9.6, 10
 * MySQL DB: 5.6, 5.7
 * Sqlite - latest stable (it is used mainly for development purpose)
@@ -79,7 +79,6 @@ Apache Airflow is tested with:
 ### Additional notes on Python version requirements
 
 * Stable version [requires](https://github.com/apache/airflow/issues/8162) at least Python 3.5.3 when using Python 3
-* Stable version is currently incompatible with Python 3.8 due to [a known compatibility issue](https://github.com/Tinche/cattrs/issues/77) with a dependent library
 
 ## Getting started
 
@@ -109,19 +108,19 @@ in the URL.
 1. Installing just airflow:
 
 ```bash
-pip install apache-airflow==1.10.10 \
- --constraint https://raw.githubusercontent.com/apache/airflow/1.10.10/requirements/requirements-python3.7.txt
+pip install apache-airflow==1.10.11 \
+ --constraint https://raw.githubusercontent.com/apache/airflow/1.10.11/requirements/requirements-python3.7.txt
 ```
 
-2. Installing with extras (for example postgres,gcp)
+2. Installing with extras (for example postgres,google)
 ```bash
-pip install apache-airflow[postgres,gcp]==1.10.10 \
- --constraint https://raw.githubusercontent.com/apache/airflow/1.10.10/requirements/requirements-python3.7.txt
+pip install apache-airflow[postgres,google]==1.10.11 \
+ --constraint https://raw.githubusercontent.com/apache/airflow/1.10.11/requirements/requirements-python3.7.txt
 ```
 
 ## Building customized production images
 
-In order to use Airlfow in Docker Compose or Kubernetes, you might need to use or build production images
+In order to use Airflow in Docker Compose or Kubernetes, you might need to use or build production images
 of Apache Airflow. The community provides two types of support for the production images:
 
 * We provide pre-build relesed version of production image in PyPI build from released
@@ -391,6 +390,7 @@ Currently **officially** using Airflow:
 1. [DoorDash](https://www.doordash.com/)
 1. [Dotmodus](http://dotmodus.com) [[@dannylee12](https://github.com/dannylee12)]
 1. [Drivy](https://www.drivy.com) [[@AntoineAugusti](https://github.com/AntoineAugusti)]
+1. [Dynata](https://www.dynata.com) [[@neil3handari](https://github.com/neil3handari)]
 1. [Easy Taxi](http://www.easytaxi.com/) [[@caique-lima](https://github.com/caique-lima) & [@diraol](https://github.com/diraol)]
 1. [EllisDon](http://www.ellisdon.com/) [[@d2kalra](https://github.com/d2kalra) & [@zbasama](https://github.com/zbasama)]
 1. [Endesa](https://www.endesa.com) [[@drexpp](https://github.com/drexpp)]
